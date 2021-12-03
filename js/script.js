@@ -6,9 +6,10 @@ const getRandomDiceRoll = function(sides=6) {
   return Math.floor( Math.random() * sides ) + 1
 }
 
+let lastNum = 0
+
 // Here's a test roll, check the console!
 // 1) Call getRandomDiceRoll() and store the result as a variable named "diceRoll"
-
 const rollDie = function() {
 
   const rollNum = getRandomDiceRoll()
@@ -18,11 +19,11 @@ const rollDie = function() {
   const diceFace = document.getElementById(`die`)
   const diceMessage = document.getElementById(`text`)
   let rollStr = ``
+  let dupMessage = ``
 
   diceFace.setAttribute(`src`, `img/dice${rollNum}.svg`)
 
   // 3) Use `diceRoll` to update the label "You rolled: #" (replacing # with the roll)
-
   
 if (rollNum == 1){
     rollStr = `One`
@@ -40,9 +41,16 @@ if (rollNum == 1){
     rollStr = `I dont know that number!`
   }
 
-  diceMessage.textContent = `You rolled: ${rollStr}`
+  if (rollNum == lastNum){
+    dupMessage = `Again!`
+  }
+
+  lastNum = rollNum;
+
+  diceMessage.textContent = `You rolled: ${rollStr}${dupMessage}`
 
   // 4) Wrap the dice roll procedure in a function named rollTheDice(), call it from the console to test
+
 
 }
 const eleButton = document.getElementById(`button`)
