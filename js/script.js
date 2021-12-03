@@ -12,7 +12,7 @@ const getRandomDiceRoll = function(sides=6) {
 const rollDie = function() {
 
   const rollNum = getRandomDiceRoll()
-  
+
   // 2) Update user interface (document), showing the diceface (svg image) that matches the roll number
 
   const diceFace = document.getElementById(`die`)
@@ -36,6 +36,8 @@ if (rollNum == 1){
     rollStr = `Five`
   }else if(rollNum == 6){
     rollStr = `Six`
+  }else {
+    rollStr = `I dont know that number!`
   }
 
   diceMessage.textContent = `You rolled: ${rollStr}`
