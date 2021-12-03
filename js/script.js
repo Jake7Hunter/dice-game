@@ -7,12 +7,42 @@ const getRandomDiceRoll = function(sides=6) {
 }
 
 // Here's a test roll, check the console!
-console.log(getRandomDiceRoll())
-
 // 1) Call getRandomDiceRoll() and store the result as a variable named "diceRoll"
 
-// 2) Update user interface (document), showing the diceface (svg image) that matches the roll number
+const rollDie = function() {
 
-// 3) Use `diceRoll` to update the label "You rolled: #" (replacing # with the roll)
+  const rollNum = getRandomDiceRoll()
+  
+  // 2) Update user interface (document), showing the diceface (svg image) that matches the roll number
 
-// 4) Wrap the dice roll procedure in a function named rollTheDice(), call it from the console to test
+  const diceFace = document.getElementById(`die`)
+  const diceMessage = document.getElementById(`text`)
+  let rollStr = ``
+
+  diceFace.setAttribute(`src`, `img/dice${rollNum}.svg`)
+
+  // 3) Use `diceRoll` to update the label "You rolled: #" (replacing # with the roll)
+
+  
+if (rollNum == 1){
+    rollStr = `One`
+  }else if(rollNum == 2){
+    rollStr = `Two`
+  }else if (rollNum == 3){
+    rollStr = `Three`
+  }else if(rollNum == 4){
+    rollStr = `Four`
+  }else if(rollNum == 5){
+    rollStr = `Five`
+  }else if(rollNum == 6){
+    rollStr = `Six`
+  }
+
+  diceMessage.textContent = `You rolled: ${rollStr}`
+
+  // 4) Wrap the dice roll procedure in a function named rollTheDice(), call it from the console to test
+
+}
+const eleButton = document.getElementById(`button`)
+
+eleButton.addEventListener(`click`, rollDie)
