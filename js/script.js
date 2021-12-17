@@ -13,24 +13,28 @@ let lastNum = 0
 const rollDie = function() {
 
   const rollNum = getRandomDiceRoll()
+  const rollNum2 = getRandomDiceRoll()
 
   // 2) Update user interface (document), showing the diceface (svg image) that matches the roll number
 
   const diceFace = document.getElementById(`die`)
   const diceMessage = document.getElementById(`text`)
+  const diceFace2 = document.getElementById(`die2`)
+  const diceMessage2 = document.getElementById(`text2`)
   let rollStr = ``
   let dupMessage = ``
 
   diceFace.setAttribute(`src`, `img/dice${rollNum}.svg`)
+  diceFace2.setAttribute(`src`, `img/dice${rollNum2}.svg`)
 
   // 3) Use `diceRoll` to update the label "You rolled: #" (replacing # with the roll)
   
-if (rollNum == 1){
-    rollStr = `One`
-  }else if(rollNum == 2){
-    rollStr = `Two`
-  }else if (rollNum == 3){
-    rollStr = `Three`
+if (rollNum == 1 && rollNum2 == 1){
+    rollStr = `Snake Eyes`
+  }else if(rollNum == 1 && rollNum2 == 2 || rollNum == 2 && rollNum2 == 1){
+    rollStr = `Ace Deuce`
+  }else if (rollNum == 2 && rollNum2 == 2){
+    rollStr = `Hard Four`
   }else if(rollNum == 4){
     rollStr = `Four`
   }else if(rollNum == 5){
@@ -47,7 +51,7 @@ if (rollNum == 1){
 
   lastNum = rollNum;
 
-  diceMessage.textContent = `You rolled: ${rollStr}${dupMessage}`
+  diceMessage.textContent = `You rolled: ${rollStr} ${dupMessage}`
 
   // 4) Wrap the dice roll procedure in a function named rollTheDice(), call it from the console to test
 
@@ -56,3 +60,5 @@ if (rollNum == 1){
 const eleButton = document.getElementById(`button`)
 
 eleButton.addEventListener(`click`, rollDie)
+
+//Not fully completed
